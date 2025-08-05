@@ -1,5 +1,6 @@
 import * as React from "react"
-import { GalleryVerticalEnd } from "lucide-react"
+import { Palette } from "lucide-react"
+import Link from "next/link"
 
 import {
   Sidebar,
@@ -15,141 +16,79 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar"
 
-// This is sample data.
+// Navigation data for template categories
 const data = {
   navMain: [
     {
-      title: "Getting Started",
+      title: "Components",
       url: "#",
       items: [
         {
-          title: "Installation",
-          url: "#",
+          title: "Forms",
+          url: "/forms",
+          isActive: false,
         },
         {
-          title: "Project Structure",
-          url: "#",
+          title: "Cards",
+          url: "/cards",
+          isActive: false,
+        },
+        {
+          title: "Tables",
+          url: "/tables",
+          isActive: false,
+        },
+        {
+          title: "Charts",
+          url: "/charts",
+          isActive: false,
         },
       ],
     },
     {
-      title: "Building Your Application",
+      title: "Templates",
       url: "#",
       items: [
         {
-          title: "Routing",
-          url: "#",
+          title: "Email Templates",
+          url: "/emails",
+          isActive: false,
         },
         {
-          title: "Data Fetching",
-          url: "#",
-          isActive: true,
+          title: "Dashboard Layouts",
+          url: "/dashboards",
+          isActive: false,
         },
         {
-          title: "Rendering",
-          url: "#",
+          title: "Authentication Pages",
+          url: "/auth",
+          isActive: false,
         },
         {
-          title: "Caching",
-          url: "#",
-        },
-        {
-          title: "Styling",
-          url: "#",
-        },
-        {
-          title: "Optimizing",
-          url: "#",
-        },
-        {
-          title: "Configuring",
-          url: "#",
-        },
-        {
-          title: "Testing",
-          url: "#",
-        },
-        {
-          title: "Authentication",
-          url: "#",
-        },
-        {
-          title: "Deploying",
-          url: "#",
-        },
-        {
-          title: "Upgrading",
-          url: "#",
-        },
-        {
-          title: "Examples",
-          url: "#",
+          title: "Landing Pages",
+          url: "/landing",
+          isActive: false,
         },
       ],
     },
     {
-      title: "API Reference",
+      title: "Examples",
       url: "#",
       items: [
         {
-          title: "Components",
-          url: "#",
+          title: "E-commerce",
+          url: "/examples/ecommerce",
+          isActive: false,
         },
         {
-          title: "File Conventions",
-          url: "#",
+          title: "Marketing",
+          url: "/examples/marketing",
+          isActive: false,
         },
         {
-          title: "Functions",
-          url: "#",
-        },
-        {
-          title: "next.config.js Options",
-          url: "#",
-        },
-        {
-          title: "CLI",
-          url: "#",
-        },
-        {
-          title: "Edge Runtime",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Architecture",
-      url: "#",
-      items: [
-        {
-          title: "Accessibility",
-          url: "#",
-        },
-        {
-          title: "Fast Refresh",
-          url: "#",
-        },
-        {
-          title: "Next.js Compiler",
-          url: "#",
-        },
-        {
-          title: "Supported Browsers",
-          url: "#",
-        },
-        {
-          title: "Turbopack",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Community",
-      url: "#",
-      items: [
-        {
-          title: "Contribution Guide",
-          url: "#",
+          title: "SaaS",
+          url: "/examples/saas",
+          isActive: false,
         },
       ],
     },
@@ -163,15 +102,15 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
-              <a href="#">
+              <Link href="/">
                 <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                  <GalleryVerticalEnd className="size-4" />
+                  <Palette className="size-4" />
                 </div>
                 <div className="flex flex-col gap-0.5 leading-none">
-                  <span className="font-medium">Documentation</span>
-                  <span className="">v1.0.0</span>
+                  <span className="font-semibold">Shadcn Templates</span>
+                  <span className="text-xs">Component Library</span>
                 </div>
-              </a>
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
@@ -182,16 +121,16 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             {data.navMain.map((item) => (
               <SidebarMenuItem key={item.title}>
                 <SidebarMenuButton asChild>
-                  <a href={item.url} className="font-medium">
+                  <Link href={item.url} className="font-medium">
                     {item.title}
-                  </a>
+                  </Link>
                 </SidebarMenuButton>
                 {item.items?.length ? (
                   <SidebarMenuSub>
                     {item.items.map((item) => (
                       <SidebarMenuSubItem key={item.title}>
                         <SidebarMenuSubButton asChild isActive={item.isActive}>
-                          <a href={item.url}>{item.title}</a>
+                          <Link href={item.url}>{item.title}</Link>
                         </SidebarMenuSubButton>
                       </SidebarMenuSubItem>
                     ))}
